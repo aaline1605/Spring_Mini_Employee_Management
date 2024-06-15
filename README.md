@@ -1,4 +1,4 @@
-#Spring_Mini_Employee_Management
+Spring_Mini_Employee_Management
 
 Welcome to the Employee Management System! This project is designed to help you manage employee details efficiently using Spring Boot, Thymeleaf, and MongoDB. It includes features like
 adding new employees, updating existing employee information, deleting employees, and searching for employees by their ID. To see this project output as video,Screenshots, and documentation.
