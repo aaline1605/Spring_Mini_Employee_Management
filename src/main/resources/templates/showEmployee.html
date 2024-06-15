@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin: 50px 0;
+            color: #2c3e50;
+            font-size: 2.5em;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ecf0f1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        th {
+            background-color: #34495e;
+            color: #fff;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #d5dfe5;
+        }
+        a, button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px 0;
+            text-align: center;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        a:hover, button:hover {
+            background-color: #2980b9;
+        }
+        button {
+            font: inherit;
+        }
+        p {
+            text-align: center;
+            color: #7f8c8d;
+            margin: 20px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Staff Details</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Job Location</th>
+        <th>Department</th>
+        <th>Address</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="staff : ${staff}">
+        <td th:text="${staff.employeeId}"></td>
+        <td th:text="${staff.firstName}"></td>
+        <td th:text="${staff.lastName}"></td>
+        <td th:text="${staff.employeeEmail}"></td>
+        <td th:text="${staff.jobLocation}"></td>
+        <td th:text="${staff.department}"></td>
+        <td th:text="${staff.address}"></td>
+
+        <td><a th:href="@{/updateStaffById(employeeId=${staff.employeeId})}" class="button">Edit</a></td>
+        <td>
+            <form th:action="@{/delete/{employeeId}(employeeId=${staff.employeeId})}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+    <a href="/">Back to Home</a>
+<p>"Discover the Best in Quality and assurance with AR Products."</p>
+</body>
+</html>
